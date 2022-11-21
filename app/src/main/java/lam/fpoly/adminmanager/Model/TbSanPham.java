@@ -3,19 +3,21 @@ package lam.fpoly.adminmanager.Model;
 public class TbSanPham {
     int id_sanPham;
     String ten_sanPham;
-    String anh;
+    String srcAnh;
     int giaNhap;
     int giaBan;
     int tonKho;
-    int id_danhMuc;
+    int id_danhmuc;
 
-    public TbSanPham(String ten_sanPham, String anh, int giaNhap, int giaBan, int tonKho, int id_danhMuc) {
+    public TbSanPham() {
+    }
+
+    public TbSanPham(String ten_sanPham, String srcAnh, int giaNhap, int giaBan, int tonKho) {
         this.ten_sanPham = ten_sanPham;
-        this.anh = anh;
+        this.srcAnh = srcAnh;
         this.giaNhap = giaNhap;
         this.giaBan = giaBan;
         this.tonKho = tonKho;
-        this.id_danhMuc = id_danhMuc;
     }
 
     public int getId_sanPham() {
@@ -34,12 +36,12 @@ public class TbSanPham {
         this.ten_sanPham = ten_sanPham;
     }
 
-    public String getAnh() {
-        return anh;
+    public String getSrcAnh() {
+        return srcAnh;
     }
 
-    public void setAnh(String anh) {
-        this.anh = anh;
+    public void setSrcAnh(String srcAnh) {
+        this.srcAnh = srcAnh;
     }
 
     public int getGiaNhap() {
@@ -66,12 +68,11 @@ public class TbSanPham {
         this.tonKho = tonKho;
     }
 
-    public int getId_danhMuc() {
-        return id_danhMuc;
+    public int getId_danhmuc() {
+        return id_danhmuc;
     }
 
-    public void setId_danhMuc(int id_danhMuc) {
-        this.id_danhMuc = id_danhMuc;
+    public void setId_danhmuc(int id_danhmuc) {
+        this.id_danhmuc = id_danhmuc;
     }
 }
-
