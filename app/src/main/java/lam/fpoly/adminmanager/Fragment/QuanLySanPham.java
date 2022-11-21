@@ -51,8 +51,6 @@ public class QuanLySanPham extends Fragment {
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_quan_ly_san_pham, container, false);
         setHasOptionsMenu(true);
-        toolbar=view.findViewById(R.id.toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
         Log.i(TAG, "onCreateView: ");
 
