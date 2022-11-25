@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#76B3E4"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/khung_ql_kh"
+        android:layout_margin="10dp"
+        android:padding="3dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                android:layout_marginLeft="10dp"
+                >
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+
+                    android:src="@mipmap/ic_launcher"
+                    android:id="@+id/img_ql_anh_kh"
+                    />
+            </androidx.cardview.widget.CardView>
+          <LinearLayout
+              android:layout_width="220dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:layout_marginLeft="10dp">
+                  <TextView
+                      android:padding="2dp"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="User Name: "
+                      android:textSize="10dp"
+                      android:layout_marginTop="-2dp"
+                      android:textColor="#FFFFFF"
+                      android:textStyle="bold"
+                      />
+                  <TextView
+                      android:id="@+id/txtql_username_kh"
+                      android:paddingTop="2dp"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="huypro23"
+                      android:textSize="15dp"
+                      android:textStyle="bold"
+                      android:textColor="#302F2F"
+                      android:layout_marginLeft="5dp"/>
+              </LinearLayout>
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+
+                  android:layout_marginLeft="10dp">
+                  <TextView
+                      android:padding="2dp"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Phone number:"
+                      android:textSize="10dp"
+                      android:layout_marginTop="-2dp"
+                      android:textColor="#FFFFFF"
+                      android:textStyle="bold"
+                      />
+                  <TextView
+                      android:paddingTop="2dp"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="+8499999999"
+                      android:textSize="15dp"
+                      android:textStyle="bold"
+                      android:textColor="#302F2F"
+                      android:layout_marginLeft="5dp"
+                      android:id="@+id/txtql_sdt_kh"/>
+              </LinearLayout>
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+
+                  android:layout_marginLeft="10dp">
+                  <TextView
+                      android:padding="2dp"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Địa chỉ: "
+                      android:textSize="10dp"
+                      android:layout_marginTop="-2dp"
+                      android:textColor="#FFFFFF"
+                      android:textStyle="bold"
+                      />
+                  <TextView
+                      android:paddingTop="2dp"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="TB"
+                      android:textSize="15dp"
+                      android:textStyle="bold"
+                      android:textColor="#302F2F"
+                      android:layout_marginLeft="5dp"
+                      android:id="@+id/txtql_diachi_kh"/>
+              </LinearLayout>
+
+          </LinearLayout>
+       <ImageView
+           android:layout_width="50dp"
+           android:layout_height="50dp"
+           android:drawableLeft="@mipmap/ic_launcher"
+           android:src="@drawable/go"
+           android:layout_gravity="center"
+           android:id="@+id/imgql_chitiet_kh"
+           />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
