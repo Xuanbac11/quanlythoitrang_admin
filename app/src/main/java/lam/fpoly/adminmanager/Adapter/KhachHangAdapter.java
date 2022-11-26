@@ -1,8 +1,10 @@
 package lam.fpoly.adminmanager.Adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +15,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import lam.fpoly.adminmanager.Dao.TbKhachHangDao;
 import lam.fpoly.adminmanager.Model.TbKhachHang;
 import lam.fpoly.adminmanager.R;
 
@@ -40,12 +43,14 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.Khac
         holder.txtphonenumber.setText(""+obj.getSdt_khachHang());
         holder.txtdiachi.setText(obj.getDiaChi());
         Picasso.get().load(list.get(position).getAvatar()).fit().into(holder.imganhkh);
+        Log.i("TAG", "onBindViewHolder: "+list.get(position).getAvatar());
         holder.imgchitiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+
     }
 
     @Override
@@ -59,6 +64,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.Khac
     public class KhachhangHoder extends RecyclerView.ViewHolder{
         ImageView imganhkh,imgchitiet;
         TextView txtusername,txtphonenumber,txtdiachi;
+
         public KhachhangHoder(@NonNull View itemView) {
             super(itemView);
             imganhkh=itemView.findViewById(R.id.img_ql_anh_kh);

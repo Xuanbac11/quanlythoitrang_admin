@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity{
                         //Quản lý khách hàng
                         //set Fragment tương ứng vào đây
                         selectedNavItem.setFragment(new QuanLyKhachHang(),R.id.fragmentContainer);
-
                         mTitle.setText("Quản lý khách hàng");
                         mTitle.setTextColor(Color.parseColor("#A45C40"));
                         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAE8E0")));

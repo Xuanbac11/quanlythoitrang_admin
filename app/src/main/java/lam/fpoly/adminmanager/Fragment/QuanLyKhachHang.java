@@ -46,4 +46,12 @@ public class QuanLyKhachHang extends Fragment {
         rcvKhachHang.setAdapter(adapter);
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        list.clear();
+        list.addAll(tbkhachhangdao.getAll());
+        adapter.notifyDataSetChanged();
+    }
 }

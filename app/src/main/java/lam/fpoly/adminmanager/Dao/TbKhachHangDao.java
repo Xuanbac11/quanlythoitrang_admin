@@ -33,7 +33,7 @@ public class TbKhachHangDao {
                     obj.setDiaChi(resultSet.getString("diaChi"));
                     obj.setUserName(resultSet.getString("userName"));
                     obj.setUserPass(resultSet.getString("userPass"));
-
+                    obj.setAvatar(resultSet.getString("avatar"));
                     listCat.add(obj);
                 }
             }
