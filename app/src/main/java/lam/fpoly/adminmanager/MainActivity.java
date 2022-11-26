@@ -24,6 +24,7 @@ import com.learnoset.material.ui.learnosetnavigationbar.LearnosetNavigationBar;
 import com.learnoset.material.ui.learnosetnavigationbar.NavItemsGroup;
 import com.learnoset.material.ui.learnosetnavigationbar.NavigationEventListener;
 
+import lam.fpoly.adminmanager.Fragment.QuanLyKhuyenMai;
 import lam.fpoly.adminmanager.Fragment.QuanLySanPham;
 
 public class MainActivity extends AppCompatActivity{
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity{
                     case 2:
                         //Quản lý khuyến mại
                         //set Fragment tương ứng vào đây
-                        //selectedNavItem.setFragment(new 'Tên Fragment',R.id.fragmentContainer);
+                        selectedNavItem.setFragment(new QuanLyKhuyenMai(),R.id.fragmentContainer);
                         mTitle.setText("Quản lý khuyến mại");
                         mTitle.setTextColor(Color.parseColor("#A45C40"));
                         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAE8E0")));
