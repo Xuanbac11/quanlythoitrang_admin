@@ -24,7 +24,12 @@ import com.learnoset.material.ui.learnosetnavigationbar.LearnosetNavigationBar;
 import com.learnoset.material.ui.learnosetnavigationbar.NavItemsGroup;
 import com.learnoset.material.ui.learnosetnavigationbar.NavigationEventListener;
 
+
 import lam.fpoly.adminmanager.Fragment.QuanLyKhuyenMai;
+
+import lam.fpoly.adminmanager.Fragment.QuanLyDonHang;
+import lam.fpoly.adminmanager.Fragment.QuanLyKhachHang;
+
 import lam.fpoly.adminmanager.Fragment.QuanLySanPham;
 
 public class MainActivity extends AppCompatActivity{
@@ -78,6 +83,7 @@ public class MainActivity extends AppCompatActivity{
                         //Quản lý đơn hàng
                         //set Fragment tương ứng vào đây
                         //selectedNavItem.setFragment(new 'Tên Fragment',R.id.fragmentContainer);
+                        selectedNavItem.setFragment(new QuanLyDonHang(),R.id.fragmentContainer);
                         mTitle.setText("Quản lý đơn hàng");
                         mTitle.setTextColor(Color.parseColor("#A45C40"));
                         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAE8E0")));
@@ -93,7 +99,7 @@ public class MainActivity extends AppCompatActivity{
                     case 3:
                         //Quản lý khách hàng
                         //set Fragment tương ứng vào đây
-                        //selectedNavItem.setFragment(new 'Tên Fragment',R.id.fragmentContainer);
+                        selectedNavItem.setFragment(new QuanLyKhachHang(),R.id.fragmentContainer);
                         mTitle.setText("Quản lý khách hàng");
                         mTitle.setTextColor(Color.parseColor("#A45C40"));
                         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAE8E0")));
