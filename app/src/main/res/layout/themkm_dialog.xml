@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="15dp"
     android:layout_marginEnd="15dp"
+    android:minWidth="1000dp"
     android:background="@drawable/bg_bogoc">
 
     <LinearLayout
@@ -13,12 +14,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/bg_titile"
             android:gravity="center"
-            android:text="Chỉnh sửa thông tin"
+            android:text="Thêm Voucher"
+            android:textColor="@color/black"
             android:textSize="25dp"
             android:textStyle="bold" />
         <LinearLayout
@@ -30,40 +31,72 @@
             android:orientation="vertical">
             <Spinner
                 android:id="@+id/spnLoai"
+                android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:text="Sale"/>
             <EditText
-                android:id="@+id/user_ten_edit"
+                android:id="@+id/edSale_addkm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_text"
                 android:ems="12"
                 android:padding="10dp"
                 android:textSize="16sp" />
-            <EditText
-                android:id="@+id/user_dangnhap_edit"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:layout_marginTop="15dp"
+                android:text="Sử dụng đến"/>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:weightSum="10"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/hsd_addkm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_text"
+                    android:ems="12"
+                    android:layout_weight="9.5"
+                    android:padding="10dp"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/img_date_addkm"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_date" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/black"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/bg_text"
-                android:ems="12"
-                android:padding="10dp"
-                android:textSize="16sp"/>
+                android:textSize="16dp"
+                android:text="Giảm tối đa"/>
             <EditText
-                android:id="@+id/user_sdt_edit"
+                android:id="@+id/maxSale_addkm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/bg_text"
-                android:ems="12"
-                android:padding="10dp"
-                android:textSize="16sp"/>
-            <EditText
-                android:id="@+id/user_diachi_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
                 android:background="@drawable/bg_text"
                 android:ems="12"
                 android:padding="10dp"
@@ -74,13 +107,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="15dp"
             android:orientation="horizontal"
             android:weightSum="2">
             <Button
-                android:id="@+id/user_btnhuy"
+                android:id="@+id/addkm_btnCCancel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -94,14 +127,14 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/user_btnok"
+                android:id="@+id/addkm_btnAdd"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_bogoc_yellow"
-                android:text="OK"
+                android:text="Thêm"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
         </LinearLayout>

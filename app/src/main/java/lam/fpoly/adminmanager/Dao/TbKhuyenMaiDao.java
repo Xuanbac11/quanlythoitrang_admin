@@ -3,6 +3,7 @@ package lam.fpoly.adminmanager.Dao;
 import android.util.Log;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -42,5 +43,25 @@ public class TbKhuyenMaiDao {
         }
 
         return listCat;
+    }
+
+    public void insertRow (TbKhuyenMai objCat){
+        try {
+            if (this.objConn != null) {
+                String insertSQL = "INSERT INTO KhuyenMai VALUES (N'" + objCat.getLoai() + "'," +
+                        "'"+ objCat.getSale()+"'," +
+                        "N'"+objCat.getHsd()+"'," +
+                        "'"+objCat.getMaxSale()+"') ";
+                String generatedColumns[] = { "ID" };
+                PreparedStatement stmtInsert = this.objConn.prepareStatement(insertSQL, generatedColumns);
+                stmtInsert.execute();
+                // lấy ra ID cột tự động tăng
+                ResultSet rs = stmtInsert.getGeneratedKeys();
+                if (rs.next()) {
+                    long id = rs.getLong(1);
+                }
+            }
+        } catch (Exception e) {
+        }
     }
 }

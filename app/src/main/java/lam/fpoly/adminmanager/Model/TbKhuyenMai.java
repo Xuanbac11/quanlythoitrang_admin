@@ -10,6 +10,13 @@ public class TbKhuyenMai {
     public TbKhuyenMai() {
     }
 
+    public TbKhuyenMai(String loai, int sale, String hsd, int maxSale) {
+        this.loai = loai;
+        this.sale = sale;
+        this.hsd = hsd;
+        this.maxSale = maxSale;
+    }
+
     public int getId() {
         return id;
     }
