@@ -56,7 +56,6 @@ public class TbDanhMucDao {
         } catch (Exception e) {
             Log.i("TAG", "getID: lỗi");
         }
-
         return id;
     }
 

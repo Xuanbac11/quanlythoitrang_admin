@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
@@ -24,39 +26,34 @@ public class Create_Fragment extends Fragment {
     public static MyAdapter_GirdView myAdapterGirdView;
     public static List<TbSanPham> list;
     public static TbDanhMucDao danhMucDao;
-    public static int id;
+    public static int ID_DM = 1;
     private View view;
     public static Context context;
+
+    public static String data;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_create_, container, false);
-        idGridView = view.findViewById(R.id.idGridView);
-        context = view.getContext();
         return view;
     }
 
-//    public void ReceiveData(String data){
-//        danhMucDao = new TbDanhMucDao();
-//        sanPhamDao = new TbSanPhamDao();
-//        id = danhMucDao.getID(data);
-//        Log.i("TAG", "ReceiveData: "+data);
-//        list = new ArrayList<>();
-//        list = sanPhamDao.getSpDanhMuc(id);
-//        myAdapterGirdView = new MyAdapter_GirdView(getContext(),list);
-//        idGridView.setAdapter(myAdapterGirdView);
-//    }
-
-    public static void setGirdView(String data){
-        danhMucDao = new TbDanhMucDao();
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        idGridView = view.findViewById(R.id.idGridView);
+        context = view.getContext();
         sanPhamDao = new TbSanPhamDao();
-        id = danhMucDao.getID(data);
         list = new ArrayList<>();
-        list = sanPhamDao.getSpDanhMuc(id);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        list = sanPhamDao.getSpDanhMuc(ID_DM);
         myAdapterGirdView = new MyAdapter_GirdView(context,list);
         idGridView.setAdapter(myAdapterGirdView);
     }
-
 }

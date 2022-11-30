@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -111,7 +110,7 @@ public class QuanLySanPham extends Fragment {
         idTabDanhMuc.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                Create_Fragment.setGirdView(tab.getText().toString());
+                Create_Fragment.ID_DM =tab.getPosition()+1;
             }
 
             @Override
