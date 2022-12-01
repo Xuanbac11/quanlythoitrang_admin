@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,8 +30,7 @@ public class Create_Fragment extends Fragment {
     public static int ID_DM = 1;
     private View view;
     public static Context context;
-
-    public static String data;
+    private TextView soLuongSP;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,6 +43,7 @@ public class Create_Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         idGridView = view.findViewById(R.id.idGridView);
+        soLuongSP = view.findViewById(R.id.soLuongSP);
         context = view.getContext();
         sanPhamDao = new TbSanPhamDao();
         list = new ArrayList<>();
@@ -55,5 +56,6 @@ public class Create_Fragment extends Fragment {
         list = sanPhamDao.getSpDanhMuc(ID_DM);
         myAdapterGirdView = new MyAdapter_GirdView(context,list);
         idGridView.setAdapter(myAdapterGirdView);
+        soLuongSP.setText(list.size()+" sản phẩm");
     }
 }

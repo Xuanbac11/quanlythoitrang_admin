@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="101dp"
-    android:layout_height="185dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="5dp"
     app:cardBackgroundColor="#40000000"
@@ -9,14 +9,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="match_parent"
         android:background="@drawable/boder_itemdanhmuc"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="145.85dp"
-            app:cardCornerRadius="21.34dp">
+            app:cardCornerRadius="10dp">
 
             <ImageView
                 android:id="@+id/item_Img"
@@ -25,25 +25,53 @@
                 android:background="@color/purple_200"/>
 
         </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/tvSpName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Tên danh mục"
-            android:textColor="#1E355C"
-            android:textSize="9sp" />
-
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tvSpName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Tên"
+                android:textColor="#1E355C"
+                android:textSize="14sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvSale"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:text="Giảm 50%"-->
+<!--                android:background="#C8603F"-->
+<!--                android:textColor="#F4EFEE"-->
+<!--                android:textSize="14sp"-->
+<!--                android:textStyle="italic"/>-->
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <TextView
             android:id="@+id/tvSpPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="299999"
-            android:textColor="#A5AEBD"
-            android:textSize="7.5sp" />
+            android:textColor="@color/red"
+            android:textSize="14sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/tvSpPrice_sale"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="5dp"-->
+<!--            android:text=""-->
+<!--            android:textColor="@color/red"-->
+<!--            android:textSize="14sp" />-->
+    </LinearLayout>
+
 
     </LinearLayout>
 
