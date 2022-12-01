@@ -73,38 +73,32 @@ public class TbSanPhamDao {
         return list;
     }
 
-    public void insertRow(TbSanPham objCat) {
+    public TbSanPham getSanPhamId(int id_SanPham) {
+        List<TbSanPham> list = new ArrayList<TbSanPham>();
         try {
             if (this.objConn != null) {
-                String insertSQL = "INSERT INTO SanPham VALUES (N'" + objCat.getTen_sanPham() + "'," +
-                        "'" + objCat.getSrcAnh() + "'," +
-                        "" + objCat.getGiaNhap() + "," +
-                        "" + objCat.getGiaBan() + "," +
-                        "" + objCat.getTonKho() + "," +
-                        "" + objCat.getId_danhmuc() + ") ";
-                String generatedColumns[] = {"ID"};
-                PreparedStatement stmtInsert = this.objConn.prepareStatement(insertSQL, generatedColumns);
-                stmtInsert.execute();
-                // lấy ra ID cột tự động tăng
-                ResultSet rs = stmtInsert.getGeneratedKeys();
-                if (rs.next()) {
-                    long id = rs.getLong(1);
+                String sqlQuery = "SELECT * FROM SanPham WHERE id_sanPham = "+id_SanPham+"";
+                Statement statement = this.objConn.createStatement(); // khởi tạo cấu trúc truy vấn
+                ResultSet resultSet = statement.executeQuery(sqlQuery); // thực thi câu lệnh truy vấn
+                while (resultSet.next()) { // đọc dữ liệu gán vào đối tượng và đưa vào list
+                    TbSanPham obj = new TbSanPham();
+                    obj.setId_sanPham(resultSet.getInt("id_sanpham"));
+                    obj.setTen_sanPham(resultSet.getString("ten_sanpham"));
+                    obj.setSrcAnh(resultSet.getString("anh"));
+                    obj.setGiaBan(resultSet.getInt("giaban"));
+                    obj.setGiaNhap(resultSet.getInt("gianhap"));
+                    obj.setTonKho(resultSet.getInt("tonkho"));
+                    obj.setId_danhmuc(resultSet.getInt("id_danhmuc"));
+                    list.add(obj);
                 }
             }
         } catch (Exception e) {
+            Log.i("TAG", "getSpDanhMuc: lỗi");
         }
+
+        return list.get(0);
     }
 
-    public void updateRow(TbSanPham objCat) {
-        try {
-            if (this.objConn != null) {
-                String sqlUpdate = "UPDATE SanPham SET name= N'" + objCat.getTen_sanPham() + "' WHERE id = " + objCat.getId_sanPham();
-                PreparedStatement stmt = this.objConn.prepareStatement(sqlUpdate);
-                stmt.execute(); // thực thi câu lệnh SQL
-            }
-        } catch (Exception e) {
-        }
-    }
 
     public int count() {
         int sl = 0;
