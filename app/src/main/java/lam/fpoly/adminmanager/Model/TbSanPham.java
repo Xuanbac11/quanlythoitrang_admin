@@ -12,12 +12,13 @@ public class TbSanPham {
     public TbSanPham() {
     }
 
-    public TbSanPham(String ten_sanPham, String srcAnh, int giaNhap, int giaBan, int tonKho) {
+    public TbSanPham(String ten_sanPham, String srcAnh, int giaNhap, int giaBan, int tonKho, int id_danhmuc) {
         this.ten_sanPham = ten_sanPham;
         this.srcAnh = srcAnh;
         this.giaNhap = giaNhap;
         this.giaBan = giaBan;
         this.tonKho = tonKho;
+        this.id_danhmuc = id_danhmuc;
     }
 
     public int getId_sanPham() {
