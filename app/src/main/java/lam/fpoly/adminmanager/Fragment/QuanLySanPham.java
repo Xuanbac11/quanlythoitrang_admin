@@ -1,5 +1,6 @@
 package lam.fpoly.adminmanager.Fragment;
 
+import android.content.ClipData;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,12 +11,16 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -59,6 +64,7 @@ public class QuanLySanPham extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_search, menu);
+
         MenuItem.OnActionExpandListener onActionExpandListener=new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem item) {
@@ -71,9 +77,9 @@ public class QuanLySanPham extends Fragment {
             }
         };
         menu.findItem(R.id.search).setOnActionExpandListener(onActionExpandListener);
-
         SearchView searchView= (SearchView)menu.findItem(R.id.search) .getActionView();
         searchView.setQueryHint("nhập sản phẩm cần tìm nhé....");
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -89,7 +95,6 @@ public class QuanLySanPham extends Fragment {
         super.onCreateOptionsMenu(menu,inflater);
 
     }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

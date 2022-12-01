@@ -53,18 +53,22 @@ public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
             viewHolder.itemImg = convertView.findViewById(R.id.item_Img);
             viewHolder.tvSpName = convertView.findViewById(R.id.tvSpName);
             viewHolder.tvSpPrice = convertView.findViewById(R.id.tvSpPrice);
+            //viewHolder.tvSale = convertView.findViewById(R.id.tvSale);
+            //viewHolder.tvSpPrice_sale = convertView.findViewById(R.id.tvSpPrice_sale);
             convertView.setTag(viewHolder);
         }else{
             viewHolder = (IconViewHolder) convertView.getTag();
         }
         viewHolder.tvSpName.setText(list.get(position).getTen_sanPham());
-        viewHolder.tvSpPrice.setText(String.valueOf(list.get(position).getGiaBan()));
+        //viewHolder.tvSale.setText("     Sale 50%");
+        viewHolder.tvSpPrice.setText(list.get(position).getGiaBan()+".000đ");
+        //viewHolder.tvSpPrice_sale.setText(list.get(position).getGiaBan()/2+".000đ");
         Picasso.get().load(list.get(position).getSrcAnh()).fit().into(viewHolder.itemImg);
         return convertView;
     }
 
     public static class IconViewHolder{
-        private TextView tvSpName,tvSpPrice;
+        private TextView tvSpName,tvSpPrice,tvSale,tvSpPrice_sale;
         private ImageView itemImg;
     }
 
