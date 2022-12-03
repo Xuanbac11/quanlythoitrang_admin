@@ -58,4 +58,9 @@ public class Create_Fragment extends Fragment {
         idGridView.setAdapter(myAdapterGirdView);
         soLuongSP.setText(list.size()+" sản phẩm");
     }
+    public static void setGridView(List<TbSanPham> list1,GridView gridView){
+        list1 = sanPhamDao.getSpDanhMuc(ID_DM);
+        myAdapterGirdView = new MyAdapter_GirdView(context,list1);
+        gridView.setAdapter(myAdapterGirdView);
+    }
 }

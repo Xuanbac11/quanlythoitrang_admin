@@ -1,5 +1,7 @@
 package lam.fpoly.adminmanager.Model;
 
+import android.widget.EditText;
+
 public class TbSanPham {
     int id_sanPham;
     String ten_sanPham;
@@ -8,18 +10,22 @@ public class TbSanPham {
     int giaBan;
     int tonKho;
     int id_danhmuc;
+    String in4;
 
     public TbSanPham() {
     }
 
-    public TbSanPham(String ten_sanPham, String srcAnh, int giaNhap, int giaBan, int tonKho, int id_danhmuc) {
+    public TbSanPham(String ten_sanPham, String srcAnh, int giaNhap, int giaBan, int tonKho, int id_danhmuc, String in4) {
         this.ten_sanPham = ten_sanPham;
         this.srcAnh = srcAnh;
         this.giaNhap = giaNhap;
         this.giaBan = giaBan;
         this.tonKho = tonKho;
         this.id_danhmuc = id_danhmuc;
+        this.in4 = in4;
     }
+
+
 
     public int getId_sanPham() {
         return id_sanPham;
@@ -75,5 +81,13 @@ public class TbSanPham {
 
     public void setId_danhmuc(int id_danhmuc) {
         this.id_danhmuc = id_danhmuc;
+    }
+
+    public String getIn4() {
+        return in4;
+    }
+
+    public void setIn4(String in4) {
+        this.in4 = in4;
     }
 }

@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lam.fpoly.adminmanager.DbSqlServer;
+import lam.fpoly.adminmanager.Model.TbDonHang;
+import lam.fpoly.adminmanager.Model.TbKhachHang;
 import lam.fpoly.adminmanager.Model.TbSanPham;
 
 
@@ -37,6 +39,7 @@ public class TbSanPhamDao {
                     obj.setGiaNhap(resultSet.getInt("gianhap"));
                     obj.setTonKho(resultSet.getInt("tonkho"));
                     obj.setId_danhmuc(resultSet.getInt("id_danhmuc"));
+                    obj.setIn4(resultSet.getString("info"));
                     listCat.add(obj);
                 }
             }
@@ -45,6 +48,31 @@ public class TbSanPhamDao {
         }
 
         return listCat;
+    }
+
+    public void insertRow (TbSanPham objCat){
+        try {
+            if (this.objConn != null) {
+                String insertSQL = "INSERT INTO SanPham VALUES (N'" + objCat.getTen_sanPham() + "'," +
+                        "'"+ objCat.getSrcAnh()+"'," +
+                        "'"+objCat.getGiaNhap()+"'," +
+                        "'"+objCat.getGiaBan()+"'," +
+                        "'"+objCat.getTonKho()+"'," +
+                        "'"+objCat.getId_danhmuc()+"'," +
+                        "N'"+ objCat.getIn4()+"') ";
+                String generatedColumns[] = { "ID" };
+                Log.d("TAG", "insertRow: "+insertSQL);
+                PreparedStatement stmtInsert = this.objConn.prepareStatement(insertSQL, generatedColumns);
+                stmtInsert.execute();
+                // lấy ra ID cột tự động tăng
+                ResultSet rs = stmtInsert.getGeneratedKeys();
+                if (rs.next()) {
+                    long id = rs.getLong(1);
+                }
+            }
+        } catch (Exception e) {
+            Log.d("TAG", "insertRow: lỗi" + e);
+        }
     }
 
     public List<TbSanPham> getSpDanhMuc(int idDanhMuc) {
@@ -63,6 +91,7 @@ public class TbSanPhamDao {
                     obj.setGiaNhap(resultSet.getInt("gianhap"));
                     obj.setTonKho(resultSet.getInt("tonkho"));
                     obj.setId_danhmuc(resultSet.getInt("id_danhmuc"));
+                    obj.setIn4(resultSet.getString("info"));
                     list.add(obj);
                 }
             }
@@ -89,6 +118,7 @@ public class TbSanPhamDao {
                     obj.setGiaNhap(resultSet.getInt("gianhap"));
                     obj.setTonKho(resultSet.getInt("tonkho"));
                     obj.setId_danhmuc(resultSet.getInt("id_danhmuc"));
+                    obj.setIn4(resultSet.getString("info"));
                     list.add(obj);
                 }
             }
@@ -97,6 +127,27 @@ public class TbSanPhamDao {
         }
 
         return list.get(0);
+    }
+
+    public void upDateSp(TbSanPham obj) {
+        List<TbDonHang> list = new ArrayList<>();
+        try {
+            if (this.objConn != null) {
+                String sqlQuery = "UPDATE sanPham SET ten_sanPham = N'"+obj.getTen_sanPham()+"'," +
+                                    " anh = '"+obj.getSrcAnh()+"'," +
+                                    " giaNhap = "+obj.getGiaNhap()+"," +
+                                    " giaBan = "+obj.getGiaBan()+"," +
+                                    " tonKho = "+obj.getTonKho()+"," +
+                                    " id_danhMuc = "+obj.getId_danhmuc()+"," +
+                                    " info = N'"+obj.getIn4()+"' WHERE ten_sanPham = N'"+obj.getTen_sanPham()+"'";
+                Log.d("TAG", "upDateSp: "+sqlQuery);
+                PreparedStatement stmt = this.objConn.prepareStatement(sqlQuery);
+                stmt.execute(); // thực thi câu lệnh SQL
+            }
+        } catch (Exception e) {
+            Log.i("TAG", "getAll: lỗi +" +e);
+        }
+
     }
 
 

@@ -5,7 +5,8 @@
     android:layout_width="350dp"
     android:layout_height="wrap_content"
     android:minWidth="1000dp"
-    app:cardCornerRadius="15dp"
+    android:layout_gravity="center"
+    app:cardCornerRadius="20dp"
     android:background="#CCFF0000">
 
     <LinearLayout
@@ -139,7 +140,7 @@
                 android:textSize="16dp"
                 android:text="Thông tin sản phẩm"/>
             <EditText
-                android:id="@+id/ttsp_addsp"
+                android:id="@+id/info_addsp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_text"
@@ -158,7 +159,7 @@
             android:orientation="horizontal"
             android:weightSum="2">
             <Button
-                android:id="@+id/addsp_btnCCancel"
+                android:id="@+id/addsp_btnCancel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
