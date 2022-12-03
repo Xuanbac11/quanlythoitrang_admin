@@ -140,7 +140,7 @@
                 android:textSize="16dp"
                 android:text="Thông tin sản phẩm"/>
             <EditText
-                android:id="@+id/ttsp_addsp"
+                android:id="@+id/info_addsp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_text"

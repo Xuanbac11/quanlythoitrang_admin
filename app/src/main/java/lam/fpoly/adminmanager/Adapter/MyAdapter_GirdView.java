@@ -100,6 +100,7 @@ public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
                     EditText gianhap = dialog.findViewById(R.id.gianhap_editsp);
                     EditText giaban = dialog.findViewById(R.id.giaban_editsp);
                     EditText tonkho = dialog.findViewById(R.id.tonkho_editsp);
+                    EditText in4 = dialog.findViewById(R.id.info_editsp);
                     Button cancel = dialog.findViewById(R.id.editsp_btnCancel);
                     Button save = dialog.findViewById(R.id.editsp_btnSave);
 
@@ -109,6 +110,7 @@ public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
                     gianhap.setText(obj.getGiaNhap() + ".000đ");
                     giaban.setText(obj.getGiaBan() + ".000đ");
                     tonkho.setText("" + obj.getTonKho());
+                    in4.setText(obj.getIn4());
 
 
                     tbSanPhamDao = new TbSanPhamDao();
@@ -152,11 +154,12 @@ public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
                             int gia_nhap = fmTien(gianhap.getText().toString());
                             int gia_ban = fmTien(giaban.getText().toString());
                             int ton_kho = Integer.parseInt(tonkho.getText().toString());
+                            String in_fo = in4.getText().toString();
 
                             if (anhsp.length() == 0 || ten_sp.length() == 0 || gianhap.getText().toString().length() == 0 || giaban.getText().toString().length() == 0 || tonkho.getText().toString().length() == 0) {
                                 Toast.makeText(context, "Phải nhập đủ thông tin", Toast.LENGTH_SHORT).show();
                             } else {
-                                TbSanPham obj = new TbSanPham(ten_sp,anhsp,gia_nhap,gia_ban,ton_kho,loaii);
+                                TbSanPham obj = new TbSanPham(ten_sp,anhsp,gia_nhap,gia_ban,ton_kho,loaii,in_fo);
                                 tbSanPhamDao.upDateSp(obj);
                                 Create_Fragment.setGridView(list,Create_Fragment.idGridView);
                                 Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
