@@ -1,5 +1,7 @@
 package lam.fpoly.adminmanager.Model;
 
+import android.widget.EditText;
+
 public class TbSanPham {
     int id_sanPham;
     String ten_sanPham;
@@ -20,6 +22,8 @@ public class TbSanPham {
         this.tonKho = tonKho;
         this.id_danhmuc = id_danhmuc;
     }
+
+
 
     public int getId_sanPham() {
         return id_sanPham;

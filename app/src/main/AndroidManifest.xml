@@ -16,7 +16,8 @@
         android:theme="@style/Theme.AdminManager"
         tools:targetApi="31">
         <activity
-            android:name=".manhinhchoAdmin.Manhinhcho"
+            android:name=".manhinhchoAdmin.Manhinhcho"/>
+        <activity
             android:name=".Fragment.ChiTietDonHang"/>
         <activity
             android:name=".MainActivity"
@@ -31,15 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
 
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
     </application>
 
 </manifest>
