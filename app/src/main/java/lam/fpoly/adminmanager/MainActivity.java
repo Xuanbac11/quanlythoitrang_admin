@@ -322,7 +322,7 @@ public class MainActivity extends AppCompatActivity{
                         Toast.makeText(MainActivity.this, "Phải nhập đủ thông tin", Toast.LENGTH_SHORT).show();
                     }else{
                         TbSanPham obj = new TbSanPham(ten,anhsp,gia_nhap,gia_ban,ton_kho,loaiisp,in4);
-                        tbSanPhamDao.insertRow(obj);
+                        //tbSanPhamDao.insertRow(obj);
                         Toast.makeText(MainActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     }
