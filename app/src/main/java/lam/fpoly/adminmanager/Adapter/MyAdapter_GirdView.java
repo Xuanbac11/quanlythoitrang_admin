@@ -1,5 +1,6 @@
 package lam.fpoly.adminmanager.Adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -43,6 +44,7 @@ public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
     private Context context;
     private List<TbSanPham> list;
     int loaii;
+    String tenLoai;
     TbSanPhamDao tbSanPhamDao;
 
     public MyAdapter_GirdView(Context context, List<TbSanPham> list) {
@@ -87,6 +89,7 @@ public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
                 public boolean onLongClick(View v) {
                     Dialog dialog = new Dialog(context);
                     dialog.setContentView(R.layout.suasanpham_dialog);
+
                     Window window = dialog.getWindow();
                     if (window == null) {
                         return false;
@@ -125,7 +128,7 @@ public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
 
                     ArrayAdapter spnAdapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item, listSpn);
                     spn.setAdapter(spnAdapter);
-
+                    spn.setSelection(obj.getId_danhmuc()-1);
                     spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
