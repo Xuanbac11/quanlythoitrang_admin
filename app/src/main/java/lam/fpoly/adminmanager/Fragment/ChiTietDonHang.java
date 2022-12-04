@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -38,6 +39,7 @@ public class ChiTietDonHang extends AppCompatActivity {
     int phi_ship = 34;
     String loaii;
     Context context;
+    int indexSpn;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -94,17 +96,18 @@ public class ChiTietDonHang extends AppCompatActivity {
         listSpn.add("Đang giao hàng");
         listSpn.add("Giao hàng thành công");
 
-        for(int i = 1; i < listSpn.size(); i++){
-            String temp = listSpn.get(0);
+
+
+        for(int i = 0; i < listSpn.size(); i++){
             if(trangThai.equals(listSpn.get(i))){
-                listSpn.set(0,trangThai);
-                listSpn.set(i,temp);
+                indexSpn = i;
             }
         }
 
         ArrayAdapter spnAdapter = new ArrayAdapter(ChiTietDonHang.this, android.R.layout.simple_spinner_item, listSpn);
-        hdct_trangthai.setAdapter(spnAdapter);
 
+        hdct_trangthai.setAdapter(spnAdapter);
+        hdct_trangthai.setSelection(indexSpn);
         hdct_trangthai.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
