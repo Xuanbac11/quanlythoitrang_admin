@@ -3,6 +3,7 @@ package lam.fpoly.adminmanager.Adapter;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
@@ -31,22 +32,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lam.fpoly.adminmanager.Dao.TbDanhMucDao;
-import lam.fpoly.adminmanager.Dao.TbDonHangDao;
 import lam.fpoly.adminmanager.Dao.TbSanPhamDao;
-import lam.fpoly.adminmanager.Fragment.ChiTietDonHang;
 import lam.fpoly.adminmanager.FragmentViewPager.Create_Fragment;
-import lam.fpoly.adminmanager.MainActivity;
+import lam.fpoly.adminmanager.LoadAnh;
 import lam.fpoly.adminmanager.Model.TbDanhMuc;
 import lam.fpoly.adminmanager.Model.TbSanPham;
 import lam.fpoly.adminmanager.R;
 
 public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
     private Context context;
-    private List<TbSanPham> list;
+    public static List<TbSanPham> list;
     int loaii;
     String tenLoai;
     TbSanPhamDao tbSanPhamDao;
-
+    public static ImageView ANH_EDIT;
     public MyAdapter_GirdView(Context context, List<TbSanPham> list) {
         this.context = context;
         this.list = list;
@@ -98,7 +97,7 @@ public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
                     window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
                     Spinner spn = dialog.findViewById(R.id.spnLoaisp_editsp);
-                    EditText anh = dialog.findViewById(R.id.anh_editsp);
+                    ANH_EDIT = dialog.findViewById(R.id.anh_editsp);
                     EditText tensp = dialog.findViewById(R.id.tensp_editsp);
                     EditText gianhap = dialog.findViewById(R.id.gianhap_editsp);
                     EditText giaban = dialog.findViewById(R.id.giaban_editsp);
@@ -109,12 +108,21 @@ public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
 
 
                     tensp.setText(obj.getTen_sanPham());
-                    anh.setText(obj.getSrcAnh());
+                    Log.i("TAG", "onLongClick: "+obj.getSrcAnh());
+                    Picasso.get().load(obj.getSrcAnh()).fit().into(ANH_EDIT);
                     gianhap.setText(obj.getGiaNhap() + ".000đ");
                     giaban.setText(obj.getGiaBan() + ".000đ");
                     tonkho.setText("" + obj.getTonKho());
                     in4.setText(obj.getIn4());
 
+                    ANH_EDIT.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(context, LoadAnh.class);
+                            LoadAnh.checkEditOrAdd = false;
+                            context.startActivity(intent);
+                        }
+                    });
 
                     tbSanPhamDao = new TbSanPhamDao();
                     TbDanhMucDao tbDanhMucDao = new TbDanhMucDao();
@@ -151,8 +159,8 @@ public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
                     save.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
-                            String anhsp = anh.getText().toString();
+                            //trả link ảnh vào đây
+                            String anhsp = LoadAnh.linkUpload;
                             String ten_sp = tensp.getText().toString();
                             int gia_nhap = fmTien(gianhap.getText().toString());
                             int gia_ban = fmTien(giaban.getText().toString());
@@ -168,8 +176,6 @@ public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
                                 Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
                             }
-
-
                         }
                     });
 
@@ -209,5 +215,4 @@ public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
         int kq = Integer.parseInt(chuoi[0]);
         return kq;
     }
-
 }

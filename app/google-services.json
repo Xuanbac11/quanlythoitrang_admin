@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "866445663621",
+    "project_id": "fir-673e2",
+    "storage_bucket": "fir-673e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866445663621:android:a451b6764624d19836b8ec",
+        "android_client_info": {
+          "package_name": "lam.fpoly.adminmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "866445663621-4tq04kng2u1bggg4t4cnpspo2cbqr2st.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lam.fpoly.adminmanager",
+            "certificate_hash": "5a2368f42c129ccb3993bd3d068d18390cb7d404"
+          }
+        },
+        {
+          "client_id": "866445663621-nmhijjair56rds82mi0md3l41n9o31pp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjGmcB0DweNDf-lVgb_1UyA1jTXAHbIAQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "866445663621-nmhijjair56rds82mi0md3l41n9o31pp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 package lam.fpoly.adminmanager;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ import lam.fpoly.adminmanager.Fragment.QuanLyDonHang;
 import lam.fpoly.adminmanager.Fragment.QuanLyKhachHang;
 
 import lam.fpoly.adminmanager.Fragment.QuanLySanPham;
+import lam.fpoly.adminmanager.FragmentViewPager.Create_Fragment;
 import lam.fpoly.adminmanager.Model.TbDanhMuc;
 import lam.fpoly.adminmanager.Model.TbSanPham;
 
@@ -54,9 +56,11 @@ public class MainActivity extends AppCompatActivity{
     private boolean checkColor = true;
     private Toolbar toolbar;
     private TextView mTitle;
+    private List<TbSanPham> list;
+    private TbSanPhamDao sanPhamDao;
     private AppBarLayout actionBar;
-    int loaiisp;
-
+    int id_danhmuc;
+    public static ImageView ANH_ADD;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +68,8 @@ public class MainActivity extends AppCompatActivity{
 
         drawerLayout = findViewById(R.id.drawerLayout);
         toolbar = findViewById(R.id.tbToolBar);
+        list = new ArrayList<>();
+        sanPhamDao = new TbSanPhamDao();
 
         setSupportActionBar(toolbar);//add toolbar vào ứng dụng
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -252,11 +258,9 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        QuanLySanPham quanLySanPham = new QuanLySanPham();
         if (item.getItemId() == android.R.id.home) {
             drawerLayout.openDrawer(GravityCompat.START);
         }else if(item.getItemId() == R.id.themhang){
-            openDialog();
             Dialog dialog = new Dialog(this);
             dialog.setContentView(R.layout.themsanpham_dialog);
 
@@ -268,7 +272,7 @@ public class MainActivity extends AppCompatActivity{
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
             Spinner spn = dialog.findViewById(R.id.spnLoaisp_addsp);
-            EditText anh = dialog.findViewById(R.id.anh_addsp);
+            ANH_ADD = dialog.findViewById(R.id.anh_addsp);
             EditText tensp = dialog.findViewById(R.id.tensp_addsp);
             EditText gianhap = dialog.findViewById(R.id.gianhap_addsp);
             EditText giaban = dialog.findViewById(R.id.giaban_addsp);
@@ -277,6 +281,14 @@ public class MainActivity extends AppCompatActivity{
             Button cancel = dialog.findViewById(R.id.addsp_btnCancel);
             Button add = dialog.findViewById(R.id.addsp_btnAdd);
 
+            ANH_ADD.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(dialog.getContext(),LoadAnh.class);
+                    LoadAnh.checkEditOrAdd = true;
+                    dialog.getContext().startActivity(intent);
+                }
+            });
 
             TbDanhMucDao tbDanhMucDao = new TbDanhMucDao();
             TbSanPhamDao tbSanPhamDao = new TbSanPhamDao();
@@ -292,7 +304,7 @@ public class MainActivity extends AppCompatActivity{
             spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    loaiisp = tbDanhMucDao.getID(listSpn.get(position));
+                    id_danhmuc = tbDanhMucDao.getID(listSpn.get(position));
                 }
 
                 @Override
@@ -311,20 +323,23 @@ public class MainActivity extends AppCompatActivity{
                 @Override
                 public void onClick(View v) {
 
-                    String anhsp = anh.getText().toString();
+                    // lấy link ảnh ở đây
+                    String anhsp = LoadAnh.linkUpload;
                     String ten = tensp.getText().toString();
                     int gia_nhap = Integer.parseInt(gianhap.getText().toString());
                     int gia_ban = Integer.parseInt(giaban.getText().toString());
                     int ton_kho = Integer.parseInt(tonkho.getText().toString());
                     String in4 = info.getText().toString();
 
-
                     if(anhsp.length() == 0 || ten.length() == 0 || gianhap.getText().toString().length() == 0 || giaban.getText().toString().length() == 0 || tonkho.getText().toString().length() == 0 || in4.length() == 0){
                         Toast.makeText(MainActivity.this, "Phải nhập đủ thông tin", Toast.LENGTH_SHORT).show();
                     }else{
-                        TbSanPham obj = new TbSanPham(ten,anhsp,gia_nhap,gia_ban,ton_kho,loaiisp,in4);
-                        //tbSanPhamDao.insertRow(obj);
+                        TbSanPham obj = new TbSanPham(ten,anhsp,gia_nhap,gia_ban,ton_kho, id_danhmuc,in4);
+                        tbSanPhamDao.insertRow(obj);
                         Toast.makeText(MainActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+
+                        list = sanPhamDao.getSpDanhMuc(id_danhmuc);
+                        Create_Fragment.setGridView(list,Create_Fragment.idGridView);
                         dialog.dismiss();
                     }
 
@@ -333,82 +348,5 @@ public class MainActivity extends AppCompatActivity{
             dialog.show();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-
-    private void openDialog(){
-        Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.themsanpham_dialog);
-
-        Window window = dialog.getWindow();
-        if (window == null) {
-            return;
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        Spinner spn = dialog.findViewById(R.id.spnLoaisp_addsp);
-        EditText anh = dialog.findViewById(R.id.anh_addsp);
-        EditText tensp = dialog.findViewById(R.id.tensp_addsp);
-        EditText gianhap = dialog.findViewById(R.id.gianhap_addsp);
-        EditText giaban = dialog.findViewById(R.id.giaban_addsp);
-        EditText tonkho = dialog.findViewById(R.id.tonkho_addsp);
-        EditText info = dialog.findViewById(R.id.info_addsp);
-        Button cancel = dialog.findViewById(R.id.addsp_btnCancel);
-        Button add = dialog.findViewById(R.id.addsp_btnAdd);
-
-
-        TbDanhMucDao tbDanhMucDao = new TbDanhMucDao();
-        TbSanPhamDao tbSanPhamDao = new TbSanPhamDao();
-
-        List<String> listSpn = new ArrayList<>();
-        List<TbDanhMuc> danhMucList = tbDanhMucDao.getAll();
-        for(TbDanhMuc tbdm : danhMucList){
-            listSpn.add(tbdm.getTen_danhMuc());
-        }
-        ArrayAdapter spnAdapter = new ArrayAdapter(dialog.getContext(), android.R.layout.simple_spinner_item, listSpn);
-        spn.setAdapter(spnAdapter);
-
-        spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                loaiisp = tbDanhMucDao.getID(listSpn.get(position));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String anhsp = anh.getText().toString();
-                String ten = tensp.getText().toString();
-                int gia_nhap = Integer.parseInt(gianhap.getText().toString());
-                int gia_ban = Integer.parseInt(giaban.getText().toString());
-                int ton_kho = Integer.parseInt(tonkho.getText().toString());
-                String in4 = info.getText().toString();
-
-                if(anhsp.length() == 0 || ten.length() == 0 || gianhap.getText().toString().length() == 0 || giaban.getText().toString().length() == 0 || tonkho.getText().toString().length() == 0 || in4.length() == 0){
-                    Toast.makeText(MainActivity.this, "Phải nhập đủ thông tin", Toast.LENGTH_SHORT).show();
-                }else{
-                    TbSanPham obj = new TbSanPham(ten,anhsp,gia_nhap,gia_ban,ton_kho,loaiisp,in4);
-                    tbSanPhamDao.insertRow(obj);
-                    Toast.makeText(MainActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                    dialog.dismiss();
-                }
-
-            }
-        });
-        dialog.show();
     }
 }

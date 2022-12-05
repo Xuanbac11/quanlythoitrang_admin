@@ -46,15 +46,12 @@
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     android:text="Ảnh"/>
-                <EditText
+                <ImageView
                     android:id="@+id/anh_editsp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_text"
-                    android:ems="12"
-                    android:padding="10dp"
-                    android:textSize="16sp" />
-
+                    android:layout_gravity="center"
+                    android:layout_width="108dp"
+                    android:layout_height="108dp"
+                    android:src="@drawable/ic_launcher_background"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

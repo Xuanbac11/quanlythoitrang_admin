@@ -3,8 +3,6 @@ package lam.fpoly.adminmanager.Fragment;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Bundle;
 
@@ -18,8 +16,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -96,95 +92,82 @@ public class QuanLyKhuyenMai extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openDialog();
-            }
-        });
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.themkm_dialog);
+                Spinner spn = dialog.findViewById(R.id.spnLoai);
+                EditText edSale_addkm = dialog.findViewById(R.id.edSale_addkm);
+                EditText hsd_addkm = dialog.findViewById(R.id.hsd_addkm);
+                EditText maxSale_addkm = dialog.findViewById(R.id.maxSale_addkm);
+                ImageView imgDate = dialog.findViewById(R.id.img_date_addkm);
+                Button btnCancel = dialog.findViewById(R.id.addkm_btnCCancel);
+                Button btnAdd = dialog.findViewById(R.id.addkm_btnAdd);
 
-    }
+                List<String> listSpn = new ArrayList<>();
+                listSpn.add("freeship");
+                listSpn.add("sale");
+                ArrayAdapter spnAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, listSpn);
+                spn.setAdapter(spnAdapter);
 
-    private void openDialog(){
-        Dialog dialog = new Dialog(getContext());
-        dialog.setContentView(R.layout.themkm_dialog);
-
-        Window window = dialog.getWindow();
-        if (window == null) {
-            return;
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        Spinner spn = dialog.findViewById(R.id.spnLoai);
-        EditText edSale_addkm = dialog.findViewById(R.id.edSale_addkm);
-        EditText hsd_addkm = dialog.findViewById(R.id.hsd_addkm);
-        EditText maxSale_addkm = dialog.findViewById(R.id.maxSale_addkm);
-        ImageView imgDate = dialog.findViewById(R.id.img_date_addkm);
-        Button btnCancel = dialog.findViewById(R.id.addkm_btnCCancel);
-        Button btnAdd = dialog.findViewById(R.id.addkm_btnAdd);
-
-        List<String> listSpn = new ArrayList<>();
-        listSpn.add("freeship");
-        listSpn.add("sale");
-        ArrayAdapter spnAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, listSpn);
-        spn.setAdapter(spnAdapter);
-
-        spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                loaii = listSpn.get(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        imgDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                mDay = c.get(Calendar.DAY_OF_MONTH);
-                mMonth = c.get(Calendar.MONTH);
-                mYear = c.get(Calendar.YEAR);
-                Log.i("TAG", "onClick: "+mDay+"/"+mMonth+"/"+mYear);
-                DatePickerDialog d = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month = month+1;
-                        String date  = month +"/"+dayOfMonth+"/"+year;
-                        hsd_addkm.setText(date);
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        loaii = listSpn.get(position);
                     }
-                },mYear,mMonth,mDay);
-                d.show();
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                imgDate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Calendar c = Calendar.getInstance();
+                        mDay = c.get(Calendar.DAY_OF_MONTH);
+                        mMonth = c.get(Calendar.MONTH);
+                        mYear = c.get(Calendar.YEAR);
+                        Log.i("TAG", "onClick: "+mDay+"/"+mMonth+"/"+mYear);
+                        DatePickerDialog d = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                month = month+1;
+                                String date  = month +"/"+dayOfMonth+"/"+year;
+                                hsd_addkm.setText(date);
+                            }
+                        },mYear,mMonth,mDay);
+                        d.show();
+                    }
+                });
+
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                btnAdd.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int sale = Integer.parseInt(edSale_addkm.getText().toString());
+                        String hsd = hsd_addkm.getText().toString();
+                        int maxSale = Integer.parseInt(maxSale_addkm.getText().toString());
+
+                        if((edSale_addkm.getText().toString().length() == 0 || hsd.length() == 0 || maxSale_addkm.getText().toString().length() == 0)){
+                            Toast.makeText(getContext(), "Phải nhập đủ", Toast.LENGTH_SHORT).show();
+                        }else{
+                            tbKhuyenMai = new TbKhuyenMai(loaii,sale,hsd,maxSale);
+                            dao.insertRow(tbKhuyenMai);
+                            Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }
+                    }
+                });
+                dialog.show();
             }
         });
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                int sale = Integer.parseInt(edSale_addkm.getText().toString());
-                String hsd = hsd_addkm.getText().toString();
-                int maxSale = Integer.parseInt(maxSale_addkm.getText().toString());
-
-                if((edSale_addkm.getText().toString().length() == 0 || hsd.length() == 0 || maxSale_addkm.getText().toString().length() == 0)){
-                    Toast.makeText(getContext(), "Phải nhập đủ thông tin", Toast.LENGTH_SHORT).show();
-                }else{
-                    tbKhuyenMai = new TbKhuyenMai(loaii,sale,hsd,maxSale);
-                    dao.insertRow(tbKhuyenMai);
-                    Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                    dialog.dismiss();
-                }
-            }
-        });
-        dialog.show();
     }
 
 }
