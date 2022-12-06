@@ -32,7 +32,6 @@
             android:layout_marginTop="20dp"
             android:orientation="vertical">
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,12 +39,30 @@
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:text="Ảnh"/>
-            <ImageView
-                android:id="@+id/anh_addsp"
-                android:layout_gravity="center"
-                android:layout_width="108dp"
-                android:layout_height="108dp"
-                android:src="@drawable/ic_launcher_background"/>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/khung_anh"
+                >
+                <ImageView
+                    android:id="@+id/anh_addsp"
+                    android:layout_gravity="center"
+                    android:layout_width="108dp"
+                    android:layout_height="108dp"
+                   />
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="#E8E3E3"
+                    app:borderWidth="0dp"
+
+                    app:maxImageSize="40dp"
+                    android:src="@drawable/ic_baseline_add_24"
+                    />
+            </FrameLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
