@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+  <TextView
+
+      android:layout_width="30dp"
+      android:layout_height="wrap_content"
+      android:id="@+id/id_donmua"
+      android:text="23"
+      android:layout_margin="5dp"
+      android:textStyle="bold"
+      android:textColor="#F44336"/>
+
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/ten_donmua"
+        android:text="áo đôn chề"
+        android:layout_margin="5dp"
+        android:textStyle="bold"
+        android:textColor="#2196F3"/>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/ngay_donmua"
+        android:text="17/02/2099"
+        android:layout_margin="5dp"
+        android:textStyle="bold"
+        android:textColor="#4CAF50"/>
+    <TextView
+        android:textColor="#9C27B0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tt_donmua"
+        android:layout_margin="2dp"
+        android:textStyle="bold"/>
+
+</LinearLayout>

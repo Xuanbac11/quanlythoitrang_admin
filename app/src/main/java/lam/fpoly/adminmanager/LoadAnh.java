@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -83,6 +84,7 @@ public class LoadAnh extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Uri> task) {
                             String temp = task.getResult().toString();// lấy url để lưu vào
                             linkUpload = temp;
+                            Log.d("zzz", "onComplete: "+linkUpload);
                             if (checkEditOrAdd){
                                 Picasso.get().load(temp).fit().into(MainActivity.ANH_ADD);
                             }else {
