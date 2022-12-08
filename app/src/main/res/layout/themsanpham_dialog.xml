@@ -9,193 +9,200 @@
     app:cardCornerRadius="20dp"
     android:background="#CCFF0000">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/bg_titile"
-            android:gravity="center"
-            android:text="Thêm Sản Phẩm"
-            android:textColor="@color/black"
-            android:textSize="25dp"
-            android:textStyle="bold" />
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_titile"
+                android:gravity="center"
+                android:text="Thêm Sản Phẩm"
                 android:textColor="@color/black"
-                android:textSize="16dp"
-                android:text="Ảnh"/>
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/khung_anh"
-                >
-                <ImageView
-                    android:id="@+id/anh_addsp"
-                    android:layout_gravity="center"
-                    android:layout_width="108dp"
-                    android:layout_height="108dp"
-                   />
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#E8E3E3"
-                    app:borderWidth="0dp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:text="Ảnh"/>
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/khung_anh"
+                    >
+                    <ImageView
+                        android:id="@+id/anh_addsp"
+                        android:layout_gravity="center"
+                        android:layout_width="108dp"
+                        android:layout_height="108dp"
+                        />
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="#E8E3E3"
+                        app:borderWidth="0dp"
 
-                    app:maxImageSize="40dp"
-                    android:src="@drawable/ic_baseline_add_24"
-                    />
-            </FrameLayout>
+                        app:maxImageSize="40dp"
+                        android:src="@drawable/ic_baseline_add_24"
+                        />
+                </FrameLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/black"
-                android:layout_marginTop="15dp"
-                android:textSize="16dp"
-                android:text="Tên sản phẩm"/>
-            <EditText
-                android:id="@+id/tensp_addsp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_text"
-                android:ems="12"
-                android:padding="10dp"
-                android:textSize="16sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="15dp"
+                    android:textSize="16dp"
+                    android:text="Tên sản phẩm"/>
+                <EditText
+                    android:id="@+id/tensp_addsp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_text"
+                    android:ems="12"
+                    android:padding="10dp"
+                    android:textSize="16sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/black"
-                android:layout_marginTop="15dp"
-                android:textSize="16dp"
-                android:text="Loại sản phẩm"/>
-            <Spinner
-                android:textAlignment="center"
-                android:id="@+id/spnLoaisp_addsp"
-                android:background="@drawable/bg_text"
-                android:layout_width="180dp"
-                android:layout_height="40dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="15dp"
+                    android:textSize="16dp"
+                    android:text="Loại sản phẩm"/>
+                <Spinner
+                    android:textAlignment="center"
+                    android:id="@+id/spnLoaisp_addsp"
+                    android:background="@drawable/bg_text"
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/black"
-                android:layout_marginTop="15dp"
-                android:textSize="16dp"
-                android:text="Giá nhập"/>
-            <EditText
-                android:id="@+id/gianhap_addsp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="15dp"
+                    android:textSize="16dp"
+                    android:text="Giá nhập"/>
+                <EditText
+                    android:id="@+id/gianhap_addsp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_text"
+                    android:ems="12"
+                    android:padding="10dp"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="15dp"
+                    android:textSize="16dp"
+                    android:text="Giá bán"/>
+                <EditText
+                    android:id="@+id/giaban_addsp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_text"
+                    android:ems="12"
+                    android:padding="10dp"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="15dp"
+                    android:textSize="16dp"
+                    android:text="Tồn kho"/>
+                <EditText
+                    android:id="@+id/tonkho_addsp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_text"
+                    android:ems="12"
+                    android:padding="10dp"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="15dp"
+                    android:textSize="16dp"
+                    android:text="Thông tin sản phẩm"/>
+                <EditText
+                    android:id="@+id/info_addsp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_text"
+                    android:ems="12"
+                    android:padding="10dp"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_text"
-                android:ems="12"
-                android:padding="10dp"
-                android:textSize="16sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/black"
-                android:layout_marginTop="15dp"
-                android:textSize="16dp"
-                android:text="Giá bán"/>
-            <EditText
-                android:id="@+id/giaban_addsp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_text"
-                android:ems="12"
-                android:padding="10dp"
-                android:textSize="16sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/black"
-                android:layout_marginTop="15dp"
-                android:textSize="16dp"
-                android:text="Tồn kho"/>
-            <EditText
-                android:id="@+id/tonkho_addsp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_text"
-                android:ems="12"
-                android:padding="10dp"
-                android:textSize="16sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/black"
-                android:layout_marginTop="15dp"
-                android:textSize="16dp"
-                android:text="Thông tin sản phẩm"/>
-            <EditText
-                android:id="@+id/info_addsp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_text"
-                android:ems="12"
-                android:padding="10dp"
-                android:textSize="16sp"/>
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <Button
+                    android:id="@+id/addsp_btnCancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:alpha="0.5"
+                    android:background="@drawable/bg_bogoc_gray"
+                    android:cursorVisible="true"
+                    android:text="Hủy"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/addsp_btnAdd"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_bogoc_yellow"
+                    android:text="Thêm"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="15dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
-            <Button
-                android:id="@+id/addsp_btnCancel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="1"
-                android:alpha="0.5"
-                android:background="@drawable/bg_bogoc_gray"
-                android:cursorVisible="true"
-                android:text="Hủy"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+    </ScrollView>
 
-            <Button
-                android:id="@+id/addsp_btnAdd"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_bogoc_yellow"
-                android:text="Thêm"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-        </LinearLayout>
-    </LinearLayout>
 
 </androidx.cardview.widget.CardView>
