@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity{
 
         setSupportActionBar(toolbar);//add toolbar vào ứng dụng
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAE8E0")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#f268f2")));
         mTitle = toolbar.findViewById(R.id.toolbar_title);
         mTitle.setText("Quản lý sản phẩm");
         mTitle.setTextColor(Color.parseColor("#A45C40"));
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity{
             public void onItemSelected(int position, LearnosetNavItem selectedNavItem) {
                 switch (position){
                     case 0:
-                        selectedNavItem.setFragment(new QuanLySanPham(),R.id.fragmentContainer);
+                       selectedNavItem.setFragment(new QuanLySanPham(),R.id.fragmentContainer);
                         mTitle.setText("Quản lý sản phẩm");
                         mTitle.setTextColor(Color.parseColor("#A45C40"));
                         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAE8E0")));
