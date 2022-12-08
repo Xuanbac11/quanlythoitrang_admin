@@ -105,7 +105,7 @@ public class ChiTietDonHang extends AppCompatActivity {
         }
 
         ArrayAdapter spnAdapter = new ArrayAdapter(ChiTietDonHang.this, android.R.layout.simple_spinner_item, listSpn);
-
+       spnAdapter.setDropDownViewResource(R.layout.space_text);
         hdct_trangthai.setAdapter(spnAdapter);
         hdct_trangthai.setSelection(indexSpn);
         hdct_trangthai.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

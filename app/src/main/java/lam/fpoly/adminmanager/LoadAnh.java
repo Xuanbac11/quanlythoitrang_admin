@@ -60,7 +60,6 @@ public class LoadAnh extends AppCompatActivity {
         });
 
     }
-
     private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");

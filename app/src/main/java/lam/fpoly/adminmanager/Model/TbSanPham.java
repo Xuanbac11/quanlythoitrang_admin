@@ -15,6 +15,17 @@ public class TbSanPham {
     public TbSanPham() {
     }
 
+    public TbSanPham(int id_sanPham, String ten_sanPham, String srcAnh, int giaNhap, int giaBan, int tonKho, int id_danhmuc, String in4) {
+        this.id_sanPham = id_sanPham;
+        this.ten_sanPham = ten_sanPham;
+        this.srcAnh = srcAnh;
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
+        this.tonKho = tonKho;
+        this.id_danhmuc = id_danhmuc;
+        this.in4 = in4;
+    }
+
     public TbSanPham(String ten_sanPham, String srcAnh, int giaNhap, int giaBan, int tonKho, int id_danhmuc, String in4) {
         this.ten_sanPham = ten_sanPham;
         this.srcAnh = srcAnh;

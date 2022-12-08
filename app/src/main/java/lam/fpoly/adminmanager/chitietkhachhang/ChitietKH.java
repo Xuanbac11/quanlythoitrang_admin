@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,13 +23,14 @@ public class ChitietKH extends AppCompatActivity {
  khachHangChitietAdapter adapter;
  RecyclerView rcvctkh;
  CTKhachHangDao ctKhachHangDao;
- TextView tongdonhang,tbname,tbsdt;
+ TextView tongdonhang,tbname,tbsdt,tbdiachi;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chitiet_kh);
         tongdonhang=findViewById(R.id.tongdonhang);
+        tbdiachi=findViewById(R.id.txtctdiachi);
        tbname=findViewById(R.id.tenkh);
        tbsdt=findViewById(R.id.txtsdt);
         rcvctkh=findViewById(R.id.rcvchitiet);
@@ -38,6 +40,7 @@ public class ChitietKH extends AppCompatActivity {
         int id=i.getIntExtra("id",0);
         String name=i.getStringExtra("name");
         String sdt=i.getStringExtra("sdt");
+        String diachi=i.getStringExtra("diachi");
         ctKhachHangDao=new CTKhachHangDao();
         list =ctKhachHangDao.getALlCT_idkh(id);
 
@@ -48,8 +51,13 @@ public class ChitietKH extends AppCompatActivity {
         rcvctkh.setAdapter(adapter);
         tbname.setText(name);
         tbsdt.setText(sdt+"");
+        tbdiachi.setText(diachi);
         tongdonhang.setText(list.size()+"");
 
 
+    }
+
+    public void backarrow(View view) {
+        finish();
     }
 }

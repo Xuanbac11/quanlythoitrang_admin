@@ -64,6 +64,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.Khac
                 i.putExtra("id",obj.getId_khachHang());
                 i.putExtra("name",obj.getUserName());
                 i.putExtra("sdt",obj.getSdt_khachHang());
+                i.putExtra("diachi",obj.getDiaChi());
                 holder.context.startActivity(i);
             }
         });
