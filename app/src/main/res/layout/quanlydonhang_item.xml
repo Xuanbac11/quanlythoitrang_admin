@@ -4,7 +4,7 @@
     android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="20dp"
-    android:layout_marginTop="20dp">
+    android:layout_marginTop="13dp">
 
     <LinearLayout
         android:weightSum="3"
