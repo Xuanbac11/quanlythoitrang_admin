@@ -50,6 +50,33 @@ public class TbSanPhamDao {
         return listCat;
     }
 
+    public TbSanPham getSanPham(int id) {
+        List<TbSanPham> listCat = new ArrayList<TbSanPham>();
+        try {
+            if (this.objConn != null) {
+                String sqlQuery = "SELECT * FROM SanPham where id_sanpham = '"+id+"'";
+                Statement statement = this.objConn.createStatement(); // khởi tạo cấu trúc truy vấn
+                ResultSet resultSet = statement.executeQuery(sqlQuery); // thực thi câu lệnh truy vấn
+                while (resultSet.next()) { // đọc dữ liệu gán vào đối tượng và đưa vào list
+                    TbSanPham obj = new TbSanPham();
+                    obj.setId_sanPham(resultSet.getInt("id_sanpham"));
+                    obj.setTen_sanPham(resultSet.getString("ten_sanpham"));
+                    obj.setSrcAnh(resultSet.getString("anh"));
+                    obj.setGiaBan(resultSet.getInt("giaban"));
+                    obj.setGiaNhap(resultSet.getInt("gianhap"));
+                    obj.setTonKho(resultSet.getInt("tonkho"));
+                    obj.setId_danhmuc(resultSet.getInt("id_danhmuc"));
+                    obj.setIn4(resultSet.getString("info"));
+                    listCat.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            Log.i("TAG", "getSanPham: lỗi");
+        }
+
+        return listCat.get(0);
+    }
+
     public void insertRow (TbSanPham objCat){
         try {
             if (this.objConn != null) {

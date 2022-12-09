@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1A000000"
     tools:context=".chitietkhachhang.ChitietKH"
     android:orientation="vertical">
   <androidx.cardview.widget.CardView
@@ -27,6 +28,7 @@
         android:layout_margin="10dp"
         app:cardCornerRadius="10dp">
         <LinearLayout
+            android:paddingLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -67,13 +69,13 @@
             >
             <TextView
                 android:layout_gravity="end|center"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="#EC8A8A"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tổng số đơn hàng đặt :"
-                android:padding="5dp"/>
+                android:padding="10dp"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -117,11 +119,12 @@
 
                 />
             <TextView
+                android:textAlignment="center"
                 android:paddingLeft="20dp"
                 android:textSize="15dp"
                 android:textStyle="bold"
                 android:textColor="#EC8A8A"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="48 đường lai xá - kim chung - hoài đúc "
                 />
@@ -129,6 +132,7 @@
 
     </androidx.cardview.widget.CardView>
     <LinearLayout
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -137,22 +141,25 @@
             android:layout_height="30dp"
             android:layout_margin="2dp"
             app:cardCornerRadius="5dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <TextView
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="id"
-                    />
+                    android:text="id" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/black"
-                    android:layout_marginTop="7dp"/>
+                    android:layout_marginTop="7dp"
+                    android:background="@color/black" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -169,6 +176,7 @@
                 android:layout_gravity="center"
                 android:gravity="center">
                 <TextView
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tên Sản Phẩm"
@@ -194,6 +202,7 @@
                 android:layout_gravity="center"
                 android:gravity="center">
                 <TextView
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ngày mua"
@@ -218,6 +227,7 @@
             android:layout_gravity="center"
             android:gravity="center">
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Trạng thái"
@@ -234,6 +244,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rcvchitiet"/>

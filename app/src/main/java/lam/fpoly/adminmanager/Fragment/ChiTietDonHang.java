@@ -34,8 +34,8 @@ import lam.fpoly.adminmanager.R;
 public class ChiTietDonHang extends AppCompatActivity {
     TextView hdct_hoten, hdct_sdt, hdct_diachi, hdct_tensp_item, hdct_gia_item, hdct_soluong_item, hdct_tt_tensp, hdct_tt_tienhang, hdct_tt_ship, hdct_tt_tongtien;
     ImageView hdct_anh_item, img_edit;
-    Spinner hdct_trangthai;
-    Button btnLuu;
+    Spinner idSpinnerTrangThai;
+    TextView btnLuu;
     int phi_ship = 34;
     String loaii;
     Context context;
@@ -46,21 +46,20 @@ public class ChiTietDonHang extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_don_hang);
-        hdct_hoten = findViewById(R.id.hdct_hoten);
+        hdct_hoten = findViewById(R.id.tvName_HDCT);
         context = this;
-        hdct_sdt = findViewById(R.id.hdct_sdt);
-        hdct_diachi = findViewById(R.id.hdct_diachi);
-        hdct_trangthai = findViewById(R.id.hdct_trangthai);
+        hdct_sdt = findViewById(R.id.tvSDT_HDCT);
+        hdct_diachi = findViewById(R.id.tvDiaChi_HDCT);
+        idSpinnerTrangThai = findViewById(R.id.idSpinnerTrangThai);
         hdct_tensp_item = findViewById(R.id.hdct_tensp_item);
         hdct_gia_item = findViewById(R.id.hdct_gia_item);
-        hdct_soluong_item = findViewById(R.id.hdct_soluong_item);
-        hdct_tt_tensp = findViewById(R.id.hdct_tt_tensp);
-        hdct_tt_tienhang = findViewById(R.id.hdct_tt_tienhang);
-        hdct_tt_ship = findViewById(R.id.hdct_tt_ship);
-        hdct_tt_tongtien = findViewById(R.id.hdct_tt_tongtien);
+        hdct_soluong_item = findViewById(R.id.tvSoLuong_HDCT);
+        hdct_tt_tienhang = findViewById(R.id.tvTienHang_HDCT);
+        hdct_tt_ship = findViewById(R.id.tvPhiShip_HDCT);
+        hdct_tt_tongtien = findViewById(R.id.tvTongTienThanhToan);
         hdct_anh_item = findViewById(R.id.hdct_anh_item);
-        img_edit = findViewById(R.id.img_edit);
-        btnLuu = findViewById(R.id.btnSave_hdct);
+//        img_edit = findViewById(R.id.img_edit);
+        btnLuu = findViewById(R.id.tvDatHang_HDCT);
 
 
         Intent intent = getIntent();
@@ -80,7 +79,6 @@ public class ChiTietDonHang extends AppCompatActivity {
         hdct_tensp_item.setText(tenSP);
         hdct_gia_item.setText(giaBan+".000đ");
         hdct_soluong_item.setText(""+ soLuong);
-        hdct_tt_tensp.setText(tenSP + " x " + soLuong);
         hdct_tt_tienhang.setText(giaBan * soLuong + ".000đ");
         hdct_tt_ship.setText(phi_ship + ".000đ");
 
@@ -106,9 +104,9 @@ public class ChiTietDonHang extends AppCompatActivity {
 
         ArrayAdapter spnAdapter = new ArrayAdapter(ChiTietDonHang.this, android.R.layout.simple_spinner_item, listSpn);
 
-        hdct_trangthai.setAdapter(spnAdapter);
-        hdct_trangthai.setSelection(indexSpn);
-        hdct_trangthai.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        idSpinnerTrangThai.setAdapter(spnAdapter);
+        idSpinnerTrangThai.setSelection(indexSpn);
+        idSpinnerTrangThai.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 loaii = listSpn.get(position);
