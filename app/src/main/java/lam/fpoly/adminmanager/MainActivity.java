@@ -29,12 +29,14 @@ import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.learnoset.material.ui.learnosetnavigationbar.CustomNavTheme;
+import com.learnoset.material.ui.learnosetnavigationbar.LearnosetExceptions;
 import com.learnoset.material.ui.learnosetnavigationbar.LearnosetNavItem;
 import com.learnoset.material.ui.learnosetnavigationbar.LearnosetNavigationBar;
 import com.learnoset.material.ui.learnosetnavigationbar.NavItemsGroup;
 import com.learnoset.material.ui.learnosetnavigationbar.NavigationEventListener;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +48,7 @@ import lam.fpoly.adminmanager.Fragment.QuanLyDonHang;
 import lam.fpoly.adminmanager.Fragment.QuanLyKhachHang;
 
 import lam.fpoly.adminmanager.Fragment.QuanLySanPham;
+import lam.fpoly.adminmanager.Fragment.ThongKe.CuaHangFragment;
 import lam.fpoly.adminmanager.FragmentViewPager.Create_Fragment;
 import lam.fpoly.adminmanager.Model.TbDanhMuc;
 import lam.fpoly.adminmanager.Model.TbSanPham;
@@ -136,22 +139,14 @@ public class MainActivity extends AppCompatActivity{
                         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#385C9A")));
                         break;
                     case 5:
-                        //Quản lý tài khoản
-                        //set Fragment tương ứng vào đây
-                        //selectedNavItem.setFragment(new 'Tên Fragment',R.id.fragmentContainer);
-                        mTitle.setText("Quản lý tài khoản");
-                        mTitle.setTextColor(Color.WHITE);
-                        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4C5270")));
-                        break;
-                    case 6:
                         //Thống kê
                         //set Fragment tương ứng vào đây
-                        //selectedNavItem.setFragment(new 'Tên Fragment',R.id.fragmentContainer);
+                        selectedNavItem.setFragment(new CuaHangFragment(),R.id.fragmentContainer);
                         mTitle.setText("Thống kê");
                         mTitle.setTextColor(Color.WHITE);
                         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#145DA0")));
                         break;
-                    case 7:
+                    case 6:
                         if(checkColor){
                             settingCustomColorDark();
                         }else {
@@ -232,8 +227,7 @@ public class MainActivity extends AppCompatActivity{
         navItemsGroup3.addGroupItem(LearnosetNavItem.BuiltInItems.FEEDBACK);
         learnosetNavigationBar.addItemsGroup(navItemsGroup3);
 
-        NavItemsGroup navItemsGroup = new NavItemsGroup("Account & Statistical");
-        navItemsGroup.addGroupItem(new LearnosetNavItem("Quản lý tài khoản", R.drawable.account_circle_outline));
+        NavItemsGroup navItemsGroup = new NavItemsGroup("Statistical");
         LearnosetNavItem customGroupItem = new LearnosetNavItem("Thống kê", R.drawable.clipboard_data);
         navItemsGroup.addGroupItem(customGroupItem);
         learnosetNavigationBar.addItemsGroup(navItemsGroup);
@@ -244,16 +238,13 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void settingProfile(){
-//        Bundle bundle = getIntent().getExtras();
-//        User user = (User) bundle.get("user2");
-//
-//        File file = new File("You Image File Path");
-//        try {
-//            learnosetNavigationBar.setHeaderData(user.getName(),file);
-//        } catch (LearnosetExceptions learnosetExceptions) {
-//            learnosetExceptions.printStackTrace();
-//        }
-//        learnosetNavigationBar.setHeaderData(user.getName());
+        File file = new File("You Image File Path");
+        try {
+            learnosetNavigationBar.setHeaderData("Admin",file);
+        } catch (LearnosetExceptions learnosetExceptions) {
+            learnosetExceptions.printStackTrace();
+        }
+        learnosetNavigationBar.setHeaderData("Admin");
     }
 
     @Override

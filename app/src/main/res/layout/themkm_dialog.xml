@@ -2,12 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutThem_lthu"
-    android:layout_width="match_parent"
+    android:layout_width="350dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="15dp"
-    android:layout_marginEnd="15dp"
     app:cardCornerRadius="20dp"
-    android:minWidth="1000dp"
     android:background="@drawable/bg_bogoc">
 
     <LinearLayout

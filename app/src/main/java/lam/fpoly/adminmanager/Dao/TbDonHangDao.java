@@ -59,7 +59,29 @@ public class TbDonHangDao {
     }
 
 
+    public List<TbDonHang> getIdDonHang_TheoDate(String date1, String date2) {
+        List<TbDonHang> list = new ArrayList<>();
+        try {
+            if (this.objConn != null) {
+                String sqlQuery = "SELECT * FROM donHang where ngayMua Between '"+date1+"' and '"+date2+"'";
+                Statement statement = this.objConn.createStatement(); // khởi tạo cấu trúc truy vấn
+                ResultSet resultSet = statement.executeQuery(sqlQuery); // thực thi câu lệnh truy vấn
+                while (resultSet.next()) { // đọc dữ liệu gán vào đối tượng và đưa vào list
+                    TbDonHang obj = new TbDonHang();
+                    obj.setId_donHang(resultSet.getInt("id_donHang"));
+                    obj.setId_khachHang(resultSet.getInt("id_khachHang"));
+                    obj.setTrangThai(resultSet.getString("trangThai"));
+                    obj.setNgayMua(resultSet.getString("ngayMua"));
+                    obj.setTongtien(resultSet.getInt("tongtien"));
+                    list.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            Log.i("TAG", "getIdDonHang_TheoDate: lỗi");
+        }
 
+        return list;
+    }
 
     public void insertRow(TbDonHang objCat) {
         try {

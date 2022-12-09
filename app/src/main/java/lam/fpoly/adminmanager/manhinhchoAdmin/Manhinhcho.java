@@ -28,7 +28,7 @@ public class Manhinhcho extends AppCompatActivity {
                 try {
                     Thread.sleep(3000);
                     load();
-                    Intent i=new Intent(Manhinhcho.this, MainActivity.class);
+                    Intent i=new Intent(Manhinhcho.this, ActivityDangNhap.class);
                     startActivity(i);
                     finish();
                 } catch (InterruptedException e) {

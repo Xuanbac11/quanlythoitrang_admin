@@ -25,7 +25,7 @@ public class TbChiTietDonHangDao {
         List<TbChiTietDonHang> list = new ArrayList<>();
         try {
             if (this.objConn != null) {
-                String sqlQuery = "SELECT * FROM chiTietDonHang ";
+                String sqlQuery = "SELECT * FROM chiTietDonHang";
                 Statement statement = this.objConn.createStatement(); // khởi tạo cấu trúc truy vấn
                 ResultSet resultSet = statement.executeQuery(sqlQuery); // thực thi câu lệnh truy vấn
                 while (resultSet.next()) { // đọc dữ liệu gán vào đối tượng và đưa vào list
