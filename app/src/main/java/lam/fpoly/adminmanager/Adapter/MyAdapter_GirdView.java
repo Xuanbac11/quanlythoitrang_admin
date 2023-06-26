@@ -221,10 +221,16 @@ public class MyAdapter_GirdView extends BaseAdapter implements Filterable {
                             int gia_ban = fmTien(giaban.getText().toString());
                             int ton_kho = Integer.parseInt(tonkho.getText().toString());
                             String in_fo = in4.getText().toString();
-                            if (ten_sp.length() == 0 || gianhap.getText().toString().length() == 0 || giaban.getText().toString().length() == 0 || tonkho.getText().toString().length() == 0 || sale_editsp.getText().toString().length() == 0) {
+                            if (ten_sp.length() == 0 || gianhap.getText().toString().length() == 0 || giaban.getText().toString().length() == 0 || tonkho.getText().toString().length() == 0 ) {
+                                if (checkSale){
+                                    if (sale_editsp.getText().toString().equals("")){
+                                        Toast.makeText(context, "Phải nhập đủ thông tin", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
                                 Toast.makeText(context, "Phải nhập đủ thông tin", Toast.LENGTH_SHORT).show();
                             } else {
-                                TbSanPham obj = new TbSanPham(ten_sp,linkanh,gia_nhap,gia_ban,ton_kho,loaii,in_fo);
+                                Log.d("zzzzz", "onClick: "+ten_sp);
+                                TbSanPham obj = new TbSanPham(id_sanpham,ten_sp,linkanh,gia_nhap,gia_ban,ton_kho,loaii,in_fo);
                                 tbSanPhamDao.upDateSp(obj);
 
                                 //sale

@@ -130,7 +130,6 @@ public class TbSanPhamDao {
     }
 
     public void upDateSp(TbSanPham obj) {
-        List<TbDonHang> list = new ArrayList<>();
         try {
             if (this.objConn != null) {
                 String sqlQuery = "UPDATE sanPham SET ten_sanPham = N'"+obj.getTen_sanPham()+"'," +
@@ -139,7 +138,7 @@ public class TbSanPhamDao {
                                     " giaBan = "+obj.getGiaBan()+"," +
                                     " tonKho = "+obj.getTonKho()+"," +
                                     " id_danhMuc = "+obj.getId_danhmuc()+"," +
-                                    " info = N'"+obj.getIn4()+"' WHERE ten_sanPham = N'"+obj.getTen_sanPham()+"'";
+                                    " info = N'"+obj.getIn4()+"' WHERE id_sanpham = N'"+obj.getId_sanPham()+"'";
                 Log.d("TAG", "upDateSp: "+sqlQuery);
                 PreparedStatement stmt = this.objConn.prepareStatement(sqlQuery);
                 stmt.execute(); // thực thi câu lệnh SQL

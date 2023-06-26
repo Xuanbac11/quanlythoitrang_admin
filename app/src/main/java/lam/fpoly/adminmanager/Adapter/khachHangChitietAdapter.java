@@ -48,6 +48,7 @@ public class khachHangChitietAdapter extends RecyclerView.Adapter<khachHangChiti
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(),tt , Toast.LENGTH_SHORT).show();
+
             }
         });
     }
